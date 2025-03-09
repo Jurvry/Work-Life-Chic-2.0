@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +20,10 @@
             --bg-color-light: #1A1A33; /* Lighter background for cards */
             --error-color: #FF5252; /* For validation */
             --success-color: #4CAF50; /* For positive feedback */
-            --font-main: 'Poppins', sans-serif; /* Youthful, modern */
-            --font-fancy: 'Orbitron', sans-serif; /* AI futuristic */
-            --font-alt: 'Quicksand', sans-serif; /* Clean alternate font */
-            --font-hebrew: 'Rubik', sans-serif; /* Hebrew-friendly font */
+            --font-main: 'Poppins', sans-serif;
+            --font-fancy: 'Orbitron', sans-serif;
+            --font-alt: 'Quicksand', sans-serif;
+            --font-hebrew: 'Rubik', sans-serif;
         }
 
         * {
@@ -39,15 +40,15 @@
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
-            direction: ltr; /* Default to left-to-right */
+            direction: ltr;
         }
 
         body.hebrew {
             font-family: var(--font-hebrew);
-            direction: rtl; /* Right-to-left for Hebrew */
+            direction: rtl;
         }
 
-        /* Animated Background with Particles */
+        /* Animated Background */
         .bg-gradient {
             position: fixed;
             top: 0;
@@ -181,49 +182,6 @@
             color: var(--text-color);
             font-size: 1.5rem;
             cursor: pointer;
-        }
-
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding: clamp(2rem, 8vw, 4rem) 1rem;
-            position: relative;
-            margin: 0 auto;
-            max-width: 800px;
-        }
-
-        .hero h2 {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            font-family: var(--font-fancy);
-            text-shadow: 0 0 10px var(--glow-color);
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            margin: 1rem 0;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            background: var(--accent-color);
-            color: var(--text-color);
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            font-family: var(--font-fancy);
-            box-shadow: 0 0 15px var(--accent-color);
-            cursor: pointer;
-            margin-top: 1.5rem;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .cta-button:hover {
-            background: var(--primary-color);
-            box-shadow: 0 0 25px var(--primary-color);
-            transform: scale(1.05);
         }
 
         /* Profile Section */
@@ -685,12 +643,6 @@
             cursor: pointer;
         }
 
-        .task-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
         .task-item {
             display: flex;
             align-items: center;
@@ -754,18 +706,18 @@
 
     <!-- Header -->
     <header>
-        <button class="theme-toggle" data-lang="en">🌙</button>
+        <button class="theme-toggle" aria-label="Toggle Theme" data-lang="en">🌙</button>
         <h1 data-lang="en">Work-Life Chic 2.0</h1>
         <h1 data-lang="he" style="display: none;">וורק-לייף שיק 2.0</h1>
         <div>
-            <button class="lang-toggle" onclick="toggleLanguage()">🇮🇱 / 🇬🇧</button>
-            <button class="menu-toggle">☰</button>
+            <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle Language">🇮🇱 / 🇬🇧</button>
+            <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
         </div>
     </header>
 
     <!-- Navigation -->
     <nav>
-        <button class="nav-close">✕</button>
+        <button class="nav-close" aria-label="Close Menu">✕</button>
         <ul>
             <li><a href="#chat" data-lang="en">AI Chat</a><a href="#chat" data-lang="he" style="display: none;">צ'אט AI</a></li>
             <li><a href="#suggestions" data-lang="en">Daily Vibes</a><a href="#suggestions" data-lang="he" style="display: none;">וייבים יומיים</a></li>
@@ -779,8 +731,8 @@
         <section class="profile-section">
             <div class="profile-pic">😎</div>
             <div class="profile-info">
-                <h3 data-lang="en">Chicster</h3>
-                <h3 data-lang="he" style="display: none;">שיקסטר</h3>
+                <h3 id="profileName" data-lang="en"></h3>
+                <h3 id="profileNameHe" data-lang="he" style="display: none;"></h3>
                 <p data-lang="en">Vibin' through life with style</p>
                 <p data-lang="he" style="display: none;">חי את החיים בסטייל</p>
             </div>
@@ -788,16 +740,16 @@
                 <h4 data-lang="en">How you feelin'?</h4>
                 <h4 data-lang="he" style="display: none;">מה מצב הרוח שלך?</h4>
                 <div class="mood-options">
-                    <span class="mood-option active">😊</span>
-                    <span class="mood-option">😎</span>
-                    <span class="mood-option">🥳</span>
+                    <span class="mood-option active" tabindex="0">😊</span>
+                    <span class="mood-option" tabindex="0">😎</span>
+                    <span class="mood-option" tabindex="0">🥳</span>
                 </div>
             </div>
             <div class="status-update">
-                <textarea data-lang="en" placeholder="What's your vibe today?" rows="3"></textarea>
-                <textarea data-lang="he" placeholder="מה הוויב שלך היום?" rows="3" style="display: none;"></textarea>
-                <button data-lang="en">Post</button>
-                <button data-lang="he" style="display: none;">פרסם</button>
+                <textarea data-lang="en" placeholder="What's your vibe today?" rows="3" aria-label="Status Update"></textarea>
+                <textarea data-lang="he" placeholder="מה הוויב שלך היום?" rows="3" style="display: none;" aria-label="Status Update"></textarea>
+                <button data-lang="en" onclick="postStatus()">Post</button>
+                <button data-lang="he" style="display: none;" onclick="postStatus()">פרסם</button>
             </div>
         </section>
 
@@ -807,13 +759,13 @@
                 <h3 data-lang="en">AI Bestie</h3>
                 <h3 data-lang="he" style="display: none;">חבר AI</h3>
                 <div class="chat-controls">
-                    <button title="Clear Chat">🗑️</button>
-                    <button title="Settings">⚙️</button>
+                    <button title="Clear Chat" aria-label="Clear Chat" onclick="clearChat()">🗑️</button>
+                    <button title="Settings" aria-label="Chat Settings">⚙️</button>
                 </div>
             </div>
             <div class="chat-box" id="chatBox">
-                <div class="chat-message assistant-message" data-lang="en">Yo, what’s good? Ask me anything!</div>
-                <div class="chat-message assistant-message" data-lang="he" style="display: none;">היי, מה קורה? תשאל אותי מה שבא לך!</div>
+                <div class="chat-message assistant-message" data-lang="en">Hi there! What's your name?</div>
+                <div class="chat-message assistant-message" data-lang="he" style="display: none;">היי! מה שמך?</div>
             </div>
             <div class="chat-typing">
                 <span class="typing-dot"></span>
@@ -822,8 +774,8 @@
             </div>
             <div class="chat-input-container">
                 <div class="chat-input">
-                    <input type="text" id="chatInput" data-lang="en" placeholder="Spill the tea...">
-                    <input type="text" id="chatInputHe" data-lang="he" placeholder="שפוך את הלב..." style="display: none;">
+                    <input type="text" id="chatInput" data-lang="en" placeholder="Type your name..." aria-label="Chat Input">
+                    <input type="text" id="chatInputHe" data-lang="he" placeholder="כתוב את שמך..." style="display: none;" aria-label="Chat Input">
                     <button onclick="sendMessage()" data-lang="en">Send</button>
                     <button onclick="sendMessage()" data-lang="he" style="display: none;">שלח</button>
                 </div>
@@ -843,9 +795,9 @@
                         <span class="quick-btn" onclick="quickChat('selfie')" data-lang="he" style="display: none;">מה הוויב לסלפי שלי?</span>
                     </div>
                     <div class="chat-tools">
-                        <span class="chat-tool" id="voiceBtn" onclick="startVoice()">🎤</span>
-                        <span class="chat-tool" id="speakBtn" onclick="toggleSpeak()">🔊</span>
-                        <span class="chat-tool" id="promptSpeakBtn" onclick="speakPrompt()">🗣️</span>
+                        <span class="chat-tool" id="voiceBtn" onclick="startVoice()" aria-label="Voice Input">🎤</span>
+                        <span class="chat-tool" id="speakBtn" onclick="toggleSpeak()" aria-label="Toggle Speak">🔊</span>
+                        <span class="chat-tool" id="promptSpeakBtn" onclick="speakPrompt()" aria-label="Speak Prompt">🗣️</span>
                     </div>
                 </div>
             </div>
@@ -853,21 +805,21 @@
 
         <!-- Suggestions Section -->
         <section class="suggestions-section" id="suggestions">
-            <h3 data-lang="en">Daily Vibes</h3>
-            <h3 data-lang="he" style="display: none;">וייבים יומיים</h3>
+            <h3 id="suggestionsTitle" data-lang="en">Daily Vibes</h3>
+            <h3 id="suggestionsTitleHe" data-lang="he" style="display: none;">וייבים יומיים</h3>
             <div class="suggestion-list" id="suggestionList"></div>
         </section>
 
         <!-- Task List Section -->
         <section class="task-list-section" id="tasks">
             <div class="task-list-header">
-                <h3 data-lang="en">Tasks</h3>
-                <h3 data-lang="he" style="display: none;">משימות</h3>
-                <button class="add-task-btn" onclick="toggleTaskInput()">+</button>
+                <h3 id="tasksTitle" data-lang="en">Tasks</h3>
+                <h3 id="tasksTitleHe" data-lang="he" style="display: none;">משימות</h3>
+                <button class="add-task-btn" onclick="toggleTaskInput()" aria-label="Add Task">+</button>
             </div>
             <div class="task-input-group" id="taskInputGroup">
-                <input type="text" id="taskInput" data-lang="en" placeholder="Add a task...">
-                <input type="text" id="taskInputHe" data-lang="he" placeholder="הוסף משימה..." style="display: none;">
+                <input type="text" id="taskInput" data-lang="en" placeholder="Add a task..." aria-label="Task Input">
+                <input type="text" id="taskInputHe" data-lang="he" placeholder="הוסף משימה..." style="display: none;" aria-label="Task Input">
                 <button onclick="addTask()" data-lang="en">Add</button>
                 <button onclick="addTask()" data-lang="he" style="display: none;">הוסף</button>
             </div>
@@ -877,13 +829,24 @@
 
     <!-- JavaScript -->
     <script>
+        // State Variables
+        let userName = '';
+        let userGender = ''; // 'male', 'female', or '' (unspecified)
+        let currentLang = 'en';
+        let suggestionCount = 0;
+        const maxSuggestions = 10;
+        const recognition = window.SpeechRecognition || window.webkitSpeechRecognition ? new (window.SpeechRecognition || window.webkitSpeechRecognition)() : null;
+        const synth = window.speechSynthesis;
+        let speakEnabled = false;
+        let awaitingName = true;
+        let awaitingGender = false;
+
         // Language Data
         const langData = {
             en: {
                 header: "Work-Life Chic 2.0",
                 nav: ["AI Chat", "Daily Vibes", "Tasks"],
                 profile: {
-                    name: "Chicster",
                     desc: "Vibin' through life with style",
                     mood: "How you feelin'?",
                     status: "What's your vibe today?",
@@ -891,20 +854,20 @@
                 },
                 chat: {
                     title: "AI Bestie",
-                    welcome: "Yo, what’s good? Ask me anything!",
-                    placeholder: "Spill the tea...",
+                    welcome: "Hi there! What's your name?",
+                    genderPrompt: "Nice to meet you, [UserName]! Are you a guy, a gal, or prefer not to say? (Just type 'male', 'female', or 'skip')",
+                    placeholder: "Type your name...",
                     send: "Send",
                     quick: ["What’s my outfit?", "What’s for dinner?", "How’s my vibe?", "What’s my playlist?", "What’s my workout?", "What’s my selfie vibe?"]
                 },
-                suggestions: "Daily Vibes",
-                tasks: "Tasks",
+                suggestions: "Daily Vibes for [UserName]",
+                tasks: "[UserName]'s Tasks",
                 addTask: "Add"
             },
             he: {
                 header: "וורק-לייף שיק 2.0",
                 nav: ["צ'אט AI", "וייבים יומיים", "משימות"],
                 profile: {
-                    name: "שיקסטר",
                     desc: "חי את החיים בסטייל",
                     mood: "מה מצב הרוח שלך?",
                     status: "מה הוויב שלך היום?",
@@ -912,99 +875,241 @@
                 },
                 chat: {
                     title: "חבר AI",
-                    welcome: "היי, מה קורה? תשאל אותי מה שבא לך!",
-                    placeholder: "שפוך את הלב...",
+                    welcome: "היי! מה שמך?",
+                    genderPrompt: "נעים לפגוש אותך, [UserName]! אתה בחור, בחורה, או מעדיף לא לומר? (רק תכתוב 'זכר', 'נקבה', או 'דלג')",
+                    placeholder: "כתוב את שמך...",
                     send: "שלח",
                     quick: ["מה ללבוש היום?", "מה לארוחת ערב?", "מה הוויב שלי?", "מה הפלייליסט שלי?", "מה האימון שלי?", "מה הוויב לסלפי שלי?"]
                 },
-                suggestions: "וייבים יומיים",
-                tasks: "משימות",
+                suggestions: "וייבים יומיים עבור [UserName]",
+                tasks: "משימות של [UserName]",
                 addTask: "הוסף"
             }
         };
 
-        // AI Responses
+        // AI Responses (Gender-Tailored)
         const aiResponses = {
             en: {
-                outfit: [
-                    "Slay in a neon crop top and ripped jeans, fam!",
-                    "Rock an oversized hoodie with chunky kicks—vibes on point.",
-                    "Go bold with a leather skirt and glitter top—yasss!"
-                ],
-                dinner: [
-                    "Whip up some spicy ramen with extra vibes—slurp it up!",
-                    "Make avocado toast with a glow-up twist—chili flakes, boo!",
-                    "Bake some TikTok cookies—choc-chip realness!"
-                ],
-                vibe: [
-                    "Blast some beats and dance it out—vibe check!",
-                    "Snap a neon selfie—filter it up, queen!",
-                    "Chill with a glowy face mask—self-love time!"
-                ],
-                playlist: [
-                    "Queue up some lo-fi beats—chill vibes all day!",
-                    "Blast pop bangers—get that energy up!",
-                    "Go retro with some 80s synth—total mood!"
-                ],
-                workout: [
-                    "Hit a quick HIIT sesh—sweat it out, fam!",
-                    "Do some yoga flows—zen and flex!",
-                    "Dance cardio—shake it like nobody’s watching!"
-                ],
-                selfie: [
-                    "Golden hour glow—snap that perfect light!",
-                    "Neon filter vibes—pop off with bold colors!",
-                    "Soft glam look—tilt your head and slay!"
-                ],
-                default: [
-                    "Just keep slayin’, fam—you got this!",
-                    "Hit me with more—whatcha need?"
-                ]
+                male: {
+                    outfit: [
+                        "[UserName], rock a crisp button-up with slim jeans—sharp and chill!",
+                        "Go for a bomber jacket and cargos, [UserName]—street vibes!",
+                        "Try a polo with chinos, [UserName]—casual but classy!"
+                    ],
+                    dinner: [
+                        "Grill some steaks with garlic butter, [UserName]—manly and tasty!",
+                        "Make a hearty burger with all the fixings, [UserName]—game night vibes!",
+                        "Whip up some spicy tacos, [UserName]—quick and fire!"
+                    ],
+                    vibe: [
+                        "Hit the gym and crank some beats, [UserName]—vibe check!",
+                        "Chill with a cold one and a good game, [UserName]—solid!",
+                        "Take a late-night drive with your tunes, [UserName]—feelin’ it!"
+                    ],
+                    playlist: [
+                        "Queue up some hip-hop bangers, [UserName]—get pumped!",
+                        "Go for classic rock, [UserName]—timeless vibes!",
+                        "Try some chill EDM, [UserName]—perfect for a drive!"
+                    ],
+                    workout: [
+                        "Lift some heavy weights, [UserName]—beast mode!",
+                        "Go for a run with some hype tunes, [UserName]—get that cardio!",
+                        "Try a boxing session, [UserName]—punch it out!"
+                    ],
+                    selfie: [
+                        "Snap a pic post-workout, [UserName]—show off those gains!",
+                        "Golden hour by the car, [UserName]—sleek and cool!",
+                        "Casual smirk with shades, [UserName]—you’re killin’ it!"
+                    ],
+                    default: [
+                        "Keep it real, [UserName]—you got this!",
+                        "What’s up, [UserName]? Hit me with more!"
+                    ]
+                },
+                female: {
+                    outfit: [
+                        "[UserName], slay in a neon crop top and high-waisted jeans!",
+                        "Rock a flowy dress with chunky sneakers, [UserName]—cute yet edgy!",
+                        "Go bold with a leather skirt and sparkly top, [UserName]—yasss!"
+                    ],
+                    dinner: [
+                        "Whip up a fresh salad with grilled chicken, [UserName]—light and fab!",
+                        "Make some creamy pasta with a glass of wine, [UserName]—treat yourself!",
+                        "Bake some TikTok cookies, [UserName]—sweet vibes!"
+                    ],
+                    vibe: [
+                        "Blast some pop hits and dance it out, [UserName]—vibe check!",
+                        "Snap a neon selfie with a filter, [UserName]—you’re glowing!",
+                        "Chill with a face mask and some tea, [UserName]—self-love time!"
+                    ],
+                    playlist: [
+                        "Queue up some Taylor Swift anthems, [UserName]—sing it out!",
+                        "Go for some chill lo-fi beats, [UserName]—perfect for relaxing!",
+                        "Try some dance pop, [UserName]—get those moves going!"
+                    ],
+                    workout: [
+                        "Hit a yoga sesh with calming tunes, [UserName]—zen mode!",
+                        "Dance cardio to your fave jams, [UserName]—shake it!",
+                        "Try a Pilates class, [UserName]—core strength, girl!"
+                    ],
+                    selfie: [
+                        "Golden hour glow with soft lighting, [UserName]—stunning!",
+                        "Neon filter with bold makeup, [UserName]—pop off!",
+                        "Soft glam with a cute smile, [UserName]—slay all day!"
+                    ],
+                    default: [
+                        "Keep slayin’, [UserName]—you’re a queen!",
+                        "What’s next, [UserName]? I’m all ears!"
+                    ]
+                },
+                unspecified: {
+                    outfit: [
+                        "[UserName], try a bold graphic tee with jeans—timeless!",
+                        "Go for an oversized hoodie and sneakers, [UserName]—comfy vibes!",
+                        "Rock some layers with a scarf, [UserName]—cozy and cool!"
+                    ],
+                    dinner: [
+                        "Make some spicy ramen, [UserName]—quick and tasty!",
+                        "Try a pizza night with your fave toppings, [UserName]—chill!",
+                        "Whip up a smoothie bowl, [UserName]—fresh and fun!"
+                    ],
+                    vibe: [
+                        "Crank some tunes and vibe out, [UserName]—you do you!",
+                        "Take a walk with a podcast, [UserName]—refreshing!",
+                        "Chill with a good book, [UserName]—total relax mode!"
+                    ],
+                    playlist: [
+                        "Queue up some lo-fi beats, [UserName]—chill vibes!",
+                        "Go for some indie tracks, [UserName]—unique energy!",
+                        "Try some ambient tunes, [UserName]—set the mood!"
+                    ],
+                    workout: [
+                        "Hit a quick HIIT sesh, [UserName]—sweat it out!",
+                        "Go for a brisk walk, [UserName]—clear your mind!",
+                        "Try some stretching, [UserName]—keep it light!"
+                    ],
+                    selfie: [
+                        "Snap a pic with natural light, [UserName]—keep it real!",
+                        "Play with filters for fun, [UserName]—express yourself!",
+                        "Capture a candid moment, [UserName]—you’re awesome!"
+                    ],
+                    default: [
+                        "You’re killing it, [UserName]—keep it up!",
+                        "What’s on your mind, [UserName]? Let’s chat!"
+                    ]
+                }
             },
             he: {
-                outfit: [
-                    "תלבשי חולצת קרופ ניאון וג'ינס קרועים—סטייל מטורף!",
-                    "תשלבי הודי ענק עם נעליים מגושמות—וויב מושלם!",
-                    "תלכי על חצאית עור וחולצה נוצצת—וואו!"
-                ],
-                dinner: [
-                    "תכיני ראמן חריף עם תוספות—טעים בטירוף!",
-                    "תעשי טוסט אבוקדו עם טוויסט—פלפל חריף, יאמי!",
-                    "תאפי עוגיות טיקטוק—שוקולד צ'יפס הכי טוב!"
-                ],
-                vibe: [
-                    "תשמיעי מוזיקה ותרקדי—צ'ק וויב!",
-                    "תצלמי סלפי ניאון—תוסיפי פילטר, מלכה!",
-                    "תירגעי עם מסכת פנים זוהרת—זמן לעצמך!"
-                ],
-                playlist: [
-                    "תשמיעי ביטים של לופי—וייב רגוע כל היום!",
-                    "תפציצי עם פופ—תעלי את האנרגיה!",
-                    "תלכי רטרו עם סינת' מה-80—מצב רוח טוטאלי!"
-                ],
-                workout: [
-                    "תעשי אימון HIIT קצר—תזיעי את זה, חבר'ה!",
-                    "תתרגלי יוגה—זן וגמישות!",
-                    "קרדיו ריקוד—תשחררי את זה בלי שיראו!"
-                ],
-                selfie: [
-                    "זוהר של שעת הזהב—תצלמי את האור המושלם!",
-                    "פילטר ניאון—תבליטי עם צבעים חזקים!",
-                    "לוק עדין—תטי את הראש ותשלטי!"
-                ],
-                default: [
-                    "תמשיכי לזרוח—את מושלמת!",
-                    "תשאלי אותי עוד—מה את צריכה?"
-                ]
+                male: {
+                    outfit: [
+                        "[UserName], תלבש חולצה מכופתרת עם ג'ינס צמוד—חד ורגוע!",
+                        "תלך על ג'קט בומבר ומכנסי קרגו, [UserName]—סטייל רחוב!",
+                        "נסה פולו עם מכנסי צ'ינו, [UserName]—קז'ואל אבל קלאסי!"
+                    ],
+                    dinner: [
+                        "תצלה סטייקים עם חמאת שום, [UserName]—גברי וטעים!",
+                        "תכין המבורגר עסיסי עם כל התוספות, [UserName]—ערב משחקים!",
+                        "תכין טאקוס חריפים, [UserName]—מהיר ואש!"
+                    ],
+                    vibe: [
+                        "תלך לחדר כושר עם מוזיקה חזקה, [UserName]—צ'ק וויב!",
+                        "תירגע עם בירה קרה ומשחק טוב, [UserName]—סבבה!",
+                        "תצא לנסיעה לילית עם המוזיקה שלך, [UserName]—מרגיש את זה!"
+                    ],
+                    playlist: [
+                        "תשמיע היפ-הופ חזק, [UserName]—תתפוצץ!",
+                        "תלך על רוק קלאסי, [UserName]—וייב נצחי!",
+                        "נסה EDM רגוע, [UserName]—מושלם לנסיעה!"
+                    ],
+                    workout: [
+                        "תרים משקולות כבדים, [UserName]—מצב חיה!",
+                        "תצא לריצה עם מוזיקה חזקה, [UserName]—תפציץ בקרדיו!",
+                        "נסה אימון אגרוף, [UserName]—תפלוט הכל!"
+                    ],
+                    selfie: [
+                        "תצלם אחרי אימון, [UserName]—תראה את השרירים!",
+                        "שעת הזהב ליד האוטו, [UserName]—חלק וקול!",
+                        "חיוך קל עם משקפי שמש, [UserName]—אתה שולט!"
+                    ],
+                    default: [
+                        "תמשיך להיות אמיתי, [UserName]—אתה תותח!",
+                        "מה קורה, [UserName]? תזרוק לי עוד!"
+                    ]
+                },
+                female: {
+                    outfit: [
+                        "[UserName], תשסי בחולצת קרופ ניאון וג'ינס מותן גבוה!",
+                        "תלבשי שמלה קלילה עם סניקרס מגניבים, [UserName]—חמוד אבל חצוף!",
+                        "תלכי על חצאית עור וחולצה נוצצת, [UserName]—וואו!"
+                    ],
+                    dinner: [
+                        "תכיני סלט טרי עם עוף על הגריל, [UserName]—קליל ומדהים!",
+                        "תכיני פסטה שמנת עם כוס יין, [UserName]—תפנקי את עצמך!",
+                        "תאפי עוגיות טיקטוק, [UserName]—מתוק וקול!"
+                    ],
+                    vibe: [
+                        "תשמיעי פופ ותרקדי, [UserName]—צ'ק וויב!",
+                        "תצלמי סלפי ניאון עם פילטר, [UserName]—את זוהרת!",
+                        "תירגעי עם מסכת פנים ותה, [UserName]—זמן לעצמך!"
+                    ],
+                    playlist: [
+                        "תשמיעי שירים של טיילור סוויפט, [UserName]—תשירי בקול!",
+                        "תלכי על ביטים של לופי, [UserName]—מושלם להירגע!",
+                        "נסי פופ לריקודים, [UserName]—תזוזי קצת!"
+                    ],
+                    workout: [
+                        "תעשי יוגה עם מוזיקה רגועה, [UserName]—זן טוטאלי!",
+                        "קרדיו ריקוד עם השירים שלך, [UserName]—תשחררי!",
+                        "נסי פילאטיס, [UserName]—חיזוק ליבה, מלכה!"
+                    ],
+                    selfie: [
+                        "זוהר של שעת הזהב עם תאורה רכה, [UserName]—מהממת!",
+                        "פילטר ניאון עם איפור חזק, [UserName]—תבלטי!",
+                        "לוק עדין עם חיוך חמוד, [UserName]—שולטת כל היום!"
+                    ],
+                    default: [
+                        "תמשיכי לזרוח, [UserName]—את מלכה!",
+                        "מה הלאה, [UserName]? אני כל אוזניים!"
+                    ]
+                },
+                unspecified: {
+                    outfit: [
+                        "[UserName], תנסה חולצה גרפית עם ג'ינס—קלאסי!",
+                        "תלך על הודי גדול וסניקרס, [UserName]—נוח וקול!",
+                        "תשלב שכבות עם צעיף, [UserName]—חם ומגניב!"
+                    ],
+                    dinner: [
+                        "תכין ראמן חריף, [UserName]—מהיר וטעים!",
+                        "תעשה ערב פיצה עם תוספות שאתה אוהב, [UserName]—רגוע!",
+                        "תכין קערת סמודי, [UserName]—רענן וכיף!"
+                    ],
+                    vibe: [
+                        "תשמיע מוזיקה ותזרום, [UserName]—תהיה מי שאתה!",
+                        "תצא לטיול עם פודקאסט, [UserName]—מרענן!",
+                        "תירגע עם ספר טוב, [UserName]—מצב רגיעה!"
+                    ],
+                    playlist: [
+                        "תשמיע ביטים של לופי, [UserName]—וייב רגוע!",
+                        "תלך על שירי אינדי, [UserName]—אנרגיה ייחודית!",
+                        "נסה מוזיקה אווירתית, [UserName]—תקבע את המוד!"
+                    ],
+                    workout: [
+                        "תעשה אימון HIIT קצר, [UserName]—תזיע את זה!",
+                        "תצא להליכה מהירה, [UserName]—תנקה את הראש!",
+                        "נסה מתיחות, [UserName]—תשמור על קלילות!"
+                    ],
+                    selfie: [
+                        "תצלם עם אור טבעי, [UserName]—תשמור על אמיתי!",
+                        "תשחק עם פילטרים בשביל הכיף, [UserName]—תבטא את עצמך!",
+                        "תתפוס רגע ספונטני, [UserName]—אתה מדהים!"
+                    ],
+                    default: [
+                        "אתה שולט, [UserName]—תמשיך ככה!",
+                        "מה עובר עליך, [UserName]? בוא נדבר!"
+                    ]
+                }
             }
         };
-
-        let currentLang = 'en';
-        let suggestionCount = 0;
-        const maxSuggestions = 10;
-        const recognition = window.SpeechRecognition || window.webkitSpeechRecognition ? new (window.SpeechRecognition || window.webkitSpeechRecognition)() : null;
-        const synth = window.speechSynthesis;
-        let speakEnabled = false;
 
         // Language Toggle
         function toggleLanguage() {
@@ -1014,13 +1119,42 @@
                 el.style.display = el.getAttribute('data-lang') === currentLang ? 'block' : 'none';
             });
             updatePlaceholders();
+            updateDynamicText();
         }
 
         function updatePlaceholders() {
-            document.getElementById('chatInput').placeholder = langData[currentLang].chat.placeholder;
-            document.getElementById('chatInputHe').placeholder = langData[currentLang].chat.placeholder;
-            document.getElementById('taskInput').placeholder = langData[currentLang].chat.placeholder === "Spill the tea..." ? "Add a task..." : "הוסף משימה...";
-            document.getElementById('taskInputHe').placeholder = langData[currentLang].chat.placeholder === "Spill the tea..." ? "Add a task..." : "הוסף משימה...";
+            const chatInput = document.getElementById('chatInput');
+            const chatInputHe = document.getElementById('chatInputHe');
+            if (awaitingName) {
+                chatInput.placeholder = langData.en.chat.placeholder;
+                chatInputHe.placeholder = langData.he.chat.placeholder;
+            } else if (awaitingGender) {
+                chatInput.placeholder = currentLang === 'en' ? "Type 'male', 'female', or 'skip'..." : "כתוב 'זכר', 'נקבה', או 'דלג'...";
+                chatInputHe.placeholder = currentLang === 'en' ? "Type 'male', 'female', or 'skip'..." : "כתוב 'זכר', 'נקבה', או 'דלג'...";
+            } else {
+                chatInput.placeholder = currentLang === 'en' ? "Spill the tea..." : "שפוך את הלב...";
+                chatInputHe.placeholder = currentLang === 'en' ? "Spill the tea..." : "שפוך את הלב...";
+            }
+            document.getElementById('taskInput').placeholder = currentLang === 'en' ? "Add a task..." : "הוסף משימה...";
+            document.getElementById('taskInputHe').placeholder = currentLang === 'en' ? "Add a task..." : "הוסף משימה...";
+        }
+
+        function updateDynamicText() {
+            const suggestionsTitle = document.getElementById('suggestionsTitle');
+            const suggestionsTitleHe = document.getElementById('suggestionsTitleHe');
+            const tasksTitle = document.getElementById('tasksTitle');
+            const tasksTitleHe = document.getElementById('tasksTitleHe');
+            const profileName = document.getElementById('profileName');
+            const profileNameHe = document.getElementById('profileNameHe');
+
+            if (userName) {
+                suggestionsTitle.textContent = langData.en.suggestions.replace('[UserName]', userName);
+                suggestionsTitleHe.textContent = langData.he.suggestions.replace('[UserName]', userName);
+                tasksTitle.textContent = langData.en.tasks.replace('[UserName]', userName);
+                tasksTitleHe.textContent = langData.he.tasks.replace('[UserName]', userName);
+                profileName.textContent = userName;
+                profileNameHe.textContent = userName;
+            }
         }
 
         // Chat Functionality
@@ -1033,7 +1167,7 @@
 
             const userMsg = document.createElement('div');
             userMsg.className = 'chat-message user-message';
-            userMsg.innerHTML = `${message}<span class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>`;
+            userMsg.innerHTML = `${input.value}<span class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>`;
             chatBox.appendChild(userMsg);
 
             typing.classList.add('active');
@@ -1041,20 +1175,55 @@
 
             setTimeout(() => {
                 let response;
-                if (message.includes('outfit') || message.includes('לבוש')) {
-                    response = aiResponses[currentLang].outfit[Math.floor(Math.random() * aiResponses[currentLang].outfit.length)];
-                } else if (message.includes('dinner') || message.includes('ארוחת ערב')) {
-                    response = aiResponses[currentLang].dinner[Math.floor(Math.random() * aiResponses[currentLang].dinner.length)];
-                } else if (message.includes('vibe') || message.includes('וויב')) {
-                    response = aiResponses[currentLang].vibe[Math.floor(Math.random() * aiResponses[currentLang].vibe.length)];
-                } else if (message.includes('playlist') || message.includes('פלייליסט')) {
-                    response = aiResponses[currentLang].playlist[Math.floor(Math.random() * aiResponses[currentLang].playlist.length)];
-                } else if (message.includes('workout') || message.includes('אימון')) {
-                    response = aiResponses[currentLang].workout[Math.floor(Math.random() * aiResponses[currentLang].workout.length)];
-                } else if (message.includes('selfie') || message.includes('סלפי')) {
-                    response = aiResponses[currentLang].selfie[Math.floor(Math.random() * aiResponses[currentLang].selfie.length)];
-                } else {
-                    response = aiResponses[currentLang].default[Math.floor(Math.random() * aiResponses[currentLang].default.length)];
+
+                // Handle Name Input
+                if (awaitingName) {
+                    userName = input.value.trim();
+                    if (userName) {
+                        awaitingName = false;
+                        awaitingGender = true;
+                        response = langData[currentLang].chat.genderPrompt.replace('[UserName]', userName);
+                        updateDynamicText();
+                    } else {
+                        response = currentLang === 'en' ? "Please tell me your name!" : "בבקשה תגיד לי את שמך!";
+                    }
+                }
+                // Handle Gender Input
+                else if (awaitingGender) {
+                    const genderInput = message.toLowerCase();
+                    if (genderInput.includes('male') || genderInput.includes('זכר')) {
+                        userGender = 'male';
+                    } else if (genderInput.includes('female') || genderInput.includes('נקבה')) {
+                        userGender = 'female';
+                    } else {
+                        userGender = 'unspecified';
+                    }
+                    awaitingGender = false;
+                    response = currentLang === 'en' ? `Cool, ${userName}! What’s on your mind? Ask me anything!` : `מעולה, ${userName}! מה עובר עליך? תשאל אותי מה שבא לך!`;
+                }
+                // Normal Chat Interaction
+                else {
+                    const genderKey = userGender || 'unspecified';
+                    if (message.includes('outfit') || message.includes('לבוש')) {
+                        response = aiResponses[currentLang][genderKey].outfit[Math.floor(Math.random() * aiResponses[currentLang][genderKey].outfit.length)].replace('[UserName]', userName);
+                    } else if (message.includes('dinner') || message.includes('ארוחת ערב')) {
+                        response = aiResponses[currentLang][genderKey].dinner[Math.floor(Math.random() * aiResponses[currentLang][genderKey].dinner.length)].replace('[UserName]', userName);
+                    } else if (message.includes('vibe') || message.includes('וויב')) {
+                        response = aiResponses[currentLang][genderKey].vibe[Math.floor(Math.random() * aiResponses[currentLang][genderKey].vibe.length)].replace('[UserName]', userName);
+                    } else if (message.includes('playlist') || message.includes('פלייליסט')) {
+                        response = aiResponses[currentLang][genderKey].playlist[Math.floor(Math.random() * aiResponses[currentLang][genderKey].playlist.length)].replace('[UserName]', userName);
+                    } else if (message.includes('workout') || message.includes('אימון')) {
+                        response = aiResponses[currentLang][genderKey].workout[Math.floor(Math.random() * aiResponses[currentLang][genderKey].workout.length)].replace('[UserName]', userName);
+                    } else if (message.includes('selfie') || message.includes('סלפי')) {
+                        response = aiResponses[currentLang][genderKey].selfie[Math.floor(Math.random() * aiResponses[currentLang][genderKey].selfie.length)].replace('[UserName]', userName);
+                    } else {
+                        response = aiResponses[currentLang][genderKey].default[Math.floor(Math.random() * aiResponses[currentLang][genderKey].default.length)].replace('[UserName]', userName);
+                    }
+
+                    if (suggestionCount < maxSuggestions) {
+                        addSuggestion(response);
+                        suggestionCount++;
+                    }
                 }
 
                 const aiMsg = document.createElement('div');
@@ -1069,14 +1238,10 @@
                     synth.speak(utterance);
                 }
 
-                if (suggestionCount < maxSuggestions) {
-                    addSuggestion(response);
-                    suggestionCount++;
-                }
-
                 typing.classList.remove('active');
                 input.disabled = false;
-                if (!text) input.value = '';
+                input.value = '';
+                updatePlaceholders();
             }, 1000);
         }
 
@@ -1089,6 +1254,7 @@
         }
 
         function quickChat(type) {
+            if (awaitingName || awaitingGender) return;
             const messages = {
                 outfit: currentLang === 'en' ? "What’s my outfit?" : "מה ללבוש היום?",
                 dinner: currentLang === 'en' ? "What’s for dinner?" : "מה לארוחת ערב?",
@@ -1098,6 +1264,18 @@
                 selfie: currentLang === 'en' ? "What’s my selfie vibe?" : "מה הוויב לסלפי שלי?"
             };
             sendMessage(messages[type]);
+        }
+
+        function clearChat() {
+            const chatBox = document.getElementById('chatBox');
+            chatBox.innerHTML = `<div class="chat-message assistant-message" data-lang="en">Hi there! What's your name?</div>
+                                <div class="chat-message assistant-message" data-lang="he" style="display: none;">היי! מה שמך?</div>`;
+            awaitingName = true;
+            awaitingGender = false;
+            userName = '';
+            userGender = '';
+            updateDynamicText();
+            updatePlaceholders();
         }
 
         document.getElementById('chatInput').addEventListener('keypress', (e) => {
@@ -1117,6 +1295,11 @@
                 document.getElementById('voiceBtn').classList.remove('active');
             };
             recognition.onend = () => {
+                document.getElementById('voiceBtn').classList.remove('active');
+            };
+            recognition.onerror = (event) => {
+                console.error('Speech recognition error:', event.error);
+                alert(currentLang === 'en' ? "Sorry, there was an error with voice input!" : "סליחה, יש שגיאה בקלט הקולי!");
                 document.getElementById('voiceBtn').classList.remove('active');
             };
         }
@@ -1164,12 +1347,31 @@
         });
 
         // Mood Selector
-        document.querySelectorAll('.mood-option').forEach(option => {
-            option.addEventListener('click', () => {
-                document.querySelectorAll('.mood-option').forEach(opt => opt.classList.remove('active'));
-                option.classList.add('active');
+        function initMoodSelector() {
+            const moodOptions = document.querySelectorAll('.mood-option');
+            const savedMood = localStorage.getItem('userMood') || '😊';
+            moodOptions.forEach(option => {
+                option.classList.toggle('active', option.textContent === savedMood);
+                option.addEventListener('click', () => {
+                    moodOptions.forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+                    localStorage.setItem('userMood', option.textContent);
+                });
+                option.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') option.click();
+                });
             });
-        });
+        }
+
+        // Status Update
+        function postStatus() {
+            const textarea = document.querySelector(`.status-update textarea[data-lang="${currentLang}"]`);
+            const status = textarea.value.trim();
+            if (status) {
+                alert(currentLang === 'en' ? `Posted: ${status}` : `פורסם: ${status}`);
+                textarea.value = '';
+            }
+        }
 
         // Task List Functionality
         function toggleTaskInput() {
@@ -1186,13 +1388,38 @@
             const taskItem = document.createElement('div');
             taskItem.className = 'task-item';
             taskItem.innerHTML = `
-                <input type="checkbox" onchange="this.parentElement.classList.toggle('completed')">
+                <input type="checkbox" onchange="this.parentElement.classList.toggle('completed'); saveTasks()">
                 <span>${taskText}</span>
-                <button onclick="this.parentElement.remove()">✕</button>
+                <button onclick="this.parentElement.remove(); saveTasks()" aria-label="Delete Task">✕</button>
             `;
             taskList.appendChild(taskItem);
             input.value = '';
             toggleTaskInput();
+            saveTasks();
+        }
+
+        function saveTasks() {
+            const taskList = document.getElementById('taskList');
+            const tasks = Array.from(taskList.children).map(item => ({
+                text: item.querySelector('span').textContent,
+                completed: item.classList.contains('completed')
+            }));
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function loadTasks() {
+            const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+            const taskList = document.getElementById('taskList');
+            tasks.forEach(task => {
+                const taskItem = document.createElement('div');
+                taskItem.className = `task-item${task.completed ? ' completed' : ''}`;
+                taskItem.innerHTML = `
+                    <input type="checkbox" ${task.completed ? 'checked' : ''} onchange="this.parentElement.classList.toggle('completed'); saveTasks()">
+                    <span>${task.text}</span>
+                    <button onclick="this.parentElement.remove(); saveTasks()" aria-label="Delete Task">✕</button>
+                `;
+                taskList.appendChild(taskItem);
+            });
         }
 
         document.getElementById('taskInput').addEventListener('keypress', (e) => {
@@ -1201,6 +1428,11 @@
         document.getElementById('taskInputHe').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') addTask();
         });
+
+        // Initialize
+        initMoodSelector();
+        loadTasks();
+        updatePlaceholders();
     </script>
 </body>
 </html>
